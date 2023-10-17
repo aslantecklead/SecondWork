@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client Details</title>
+</head>
+<body>
+<h1>Client Details</h1>
+<p>ID: <span th:text="${client.getId()}"></span></p>
+<p>Name: <span th:text="${client.getName()}"></span></p>
+<p>Email: <span th:text="${client.getEmail()}"></span></p>
+<p>Phone Number: <span th:text="${client.getPhoneNumber()}"></span></p>
+<p>Budget: <span th:text="${client.getBudget()}"></span></p>
+<a th:href="@{/estate/client}">Back to List</a>
+</body>
+</html>

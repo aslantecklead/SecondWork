@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client List</title>
+</head>
+<body>
+<h1>Client List</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Budget</th>
+        <th>Details</th>
+    </tr>
+    <tr th:each="clientOne: ${client}">
+        <td th:text="${clientOne.getId()}"></td>
+        <td th:text="${clientOne.getName()}"></td>
+        <td th:text="${clientOne.getEmail()}"></td>
+        <td th:text="${clientOne.getPhoneNumber()}"></td>
+        <td th:text="${clientOne.getBudget()}"></td>
+        <td>
+            <a th:href="@{/estate/client/{id}(id=${clientOne.getId()})}">Details</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
