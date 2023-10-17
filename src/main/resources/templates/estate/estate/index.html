@@ -27,11 +27,12 @@
             <td th:text="${estate.getBathrooms()}"></td>
             <td th:text="${estate.getPrice()}"></td>
             <td>
-                <a th:href="@{/estate/{id}(id=${estate.getId()})}" class="btn btn-primary">Details</a>
+                <a th:href="@{/estates/{id}(id=${estate.getId()})}" class="btn btn-primary">Details</a>
             </td>
         </tr>
         </tbody>
     </table>
+    <a th:href="@{/}" class="btn btn-secondary">Back</a>
 </div>
 </body>
 </html>

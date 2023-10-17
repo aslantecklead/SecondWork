@@ -8,11 +8,11 @@
 <body>
 <div class="container">
     <h1 class="mt-4">Details of Estate</h1>
-    <p class="mt-3">ID: <span th:text="${estates.getId()}"></span></p>
-    <p>Address: <span th:text="${estates.getAddress()}"></span></p>
-    <p>Bedrooms: <span th:text="${estates.getBedrooms()}"></span></p>
-    <p>Bathrooms: <span th:text="${estates.getBathrooms()}"></span></p>
-    <p>Price: $<span th:text="${estates.getPrice()}"></span></p>
+    <p class="mt-3">ID: <span th:text="${estate.getId()}"></span></p>
+    <p>Address: <span th:text="${estate.getAddress()}"></span></p>
+    <p>Bedrooms: <span th:text="${estate.getBedrooms()}"></span></p>
+    <p>Bathrooms: <span th:text="${estate.getBathrooms()}"></span></p>
+    <p>Price: $<span th:text="${estate.getPrice()}"></span></p>
     <a th:href="@{/estate}" class="btn btn-primary">Back to List</a>
 </div>
 </body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Deal List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Deal List</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Property</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Details</th>
+        </tr>
+        <tr th:each="deal : ${deals}">
+            <td th:text="${deal.getId()}"></td>
+            <td th:text="${deal.getProperty()}"></td>
+            <td th:text="${deal.getPrice()}"></td>
+            <td th:text="${#dates.format(deal.getDate(), 'dd-MM-yyyy')}"></td>
+            <td>
+                <a th:href="@{/deals/{id}(id=${deal.getId()})}" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/}" class="btn btn-secondary">Back</a>
+</div>
+</body>
+</html>

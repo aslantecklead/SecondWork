@@ -29,5 +29,4 @@ public class EstateDAO {
     public Estate show(int id){
         return estate.stream().filter(personModel -> personModel.getId() == id).findAny().orElse(null);
     }
-
 }

@@ -5,28 +5,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<h1 class="mt-4 mb-4">Client List</h1>
+
 <div class="container">
-<table class="table table-striped">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th>Budget</th>
-        <th>Details</th>
-    </tr>
-    <tr th:each="client: ${clients}">
-        <td th:text="${client.getId()}"></td>
-        <td th:text="${client.getName()}"></td>
-        <td th:text="${client.getEmail()}"></td>
-        <td th:text="${client.getPhoneNumber()}"></td>
-        <td th:text="${client.getBudget()}"></td>
-        <td>
-            <a th:href="@{/client/{id}(id=${client.getId()})}" class="btn btn-primary">Details</a>
-        </td>
-    </tr>
-</table>
+    <h1 class="mt-4 mb-4">Client List</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Budget</th>
+            <th>Details</th>
+        </tr>
+        <tr th:each="client: ${clients}">
+            <td th:text="${client.getId()}"></td>
+            <td th:text="${client.getName()}"></td>
+            <td th:text="${client.getEmail()}"></td>
+            <td th:text="${client.getPhoneNumber()}"></td>
+            <td th:text="${client.getBudget()}"></td>
+            <td>
+                <a th:href="@{/clients/{id}(id=${client.getId()})}" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/}" class="btn btn-secondary">Back</a>
 </div>
 </body>
 </html>
