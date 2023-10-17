@@ -20,7 +20,7 @@ public class EstateController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("estate", _estateDAO.index());
+        model.addAttribute("estates", _estateDAO.index());
         return "estate/estate/index";
     }
 
