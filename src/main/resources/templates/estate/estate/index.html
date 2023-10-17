@@ -20,12 +20,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="estateOne: ${estate}">
-            <td th:text="${estateOne.getId()}"></td>
-            <td th:text="${estateOne.getAddress()}"></td>
-            <td th:text="${estateOne.getBedrooms()}"></td>
-            <td th:text="${estateOne.getBathrooms()}"></td>
-            <td th:text="${estateOne.getPrice()}"></td>
+        <tr th:each="estate: ${estates}">
+            <td th:text="${estate.getId()}"></td>
+            <td th:text="${estate.getAddress()}"></td>
+            <td th:text="${estate.getBedrooms()}"></td>
+            <td th:text="${estate.getBathrooms()}"></td>
+            <td th:text="${estate.getPrice()}"></td>
             <td>
                 <a th:href="@{/estate/{id}(id=${estateOne.getId()})}" class="btn btn-primary">Details</a>
             </td>

@@ -9,26 +9,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/estate")
+@RequestMapping("/estates")
 public class EstateController {
-
     private EstateDAO _estateDAO;
 
     @Autowired
-    public EstateController(EstateDAO personDAO){
-        _estateDAO = personDAO;
+    public EstateController(EstateDAO estateDAO) {
+        _estateDAO = estateDAO;
     }
 
     @GetMapping()
-    public String index(Model model){
-         model.addAttribute("estate", _estateDAO.index());
-         return "estate/index";
+    public String index(Model model) {
+        model.addAttribute("estate", _estateDAO.index());
+        return "estate/estate/index";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id,Model model){
+    public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("estate", _estateDAO.show(id));
-        return "estate/show";
+        return "estate/estate/show";
     }
-
 }
