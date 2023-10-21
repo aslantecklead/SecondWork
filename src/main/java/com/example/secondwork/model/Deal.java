@@ -1,11 +1,14 @@
 package com.example.secondwork.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Deal {
     private long id;
     private String property;
     private double price;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     public Deal(long id, String property, double price, Date date) {
@@ -13,6 +16,10 @@ public class Deal {
         this.property = property;
         this.price = price;
         this.date = date;
+    }
+
+    public Deal() {
+
     }
 
     public long getId() {
