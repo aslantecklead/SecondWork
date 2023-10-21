@@ -57,7 +57,6 @@ public class ClientController {
         return "estate/client/update";
     }
 
-
     @PostMapping("/update/{id}")
     public String update(@PathVariable("id") int id, @Valid @ModelAttribute("client") Client client) {
         client.setId(id);
@@ -65,7 +64,14 @@ public class ClientController {
         return "redirect:/clients";
     }
 
-
-
-
+    @PostMapping("/delete/{id}")
+    String delete(Model model, @PathVariable("id") int id){
+        Client client = _clientDAO.show(id);
+        if(client == null){
+            return "redirect:/clients";
+        }
+        client.setId(id);
+        _crudController.delete(client);
+        return "redirect:/clients";
+    }
 }

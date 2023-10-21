@@ -18,6 +18,7 @@
             <th>Budget</th>
             <th>Details</th>
             <th>Edit</th>
+            <th>Delete</th>
         </tr>
         <tr th:each="client: ${clients}">
             <td th:text="${client.getId()}"></td>
@@ -29,7 +30,12 @@
                 <a th:href="@{/clients/{id}(id=${client.getId()})}" class="btn btn-primary">Details</a>
             </td>
             <td>
-                <a class="nav-link" th:href="@{/clients/edit/{id}(id=${client.getId()})}">Edit</a>
+                <a class="btn btn-warning btn-block mb-2" th:href="@{/clients/edit/{id}(id=${client.getId()})}">Edit</a>
+            </td>
+            <td>
+                <form th:action="@{/clients/delete/{id}(id=${client.getId()})}" method="post">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
             </td>
         </tr>
     </table>
