@@ -10,8 +10,8 @@ import java.util.List;
 @Component
 public class DealDAO {
 
-    private static int DEAL_COUNT = 0;
-    private List<Deal> deals;
+    public static int DEAL_COUNT = 0;
+    public List<Deal> deals;
     {
         deals = new ArrayList<>();
 
@@ -28,5 +28,17 @@ public class DealDAO {
 
     public Deal show(long id) {
         return deals.stream().filter(deal -> deal.getId() == id).findFirst().orElse(null);
+    }
+
+    public int getKeyList(Deal deal) {
+        int key = -1;
+        List<Deal> books = this.index();
+        for (int i = 0; i < books.size(); i++) {
+            if(deal.getId() == books.get(i).getId()){
+                key = i;
+                break;
+            }
+        }
+        return key;
     }
 }

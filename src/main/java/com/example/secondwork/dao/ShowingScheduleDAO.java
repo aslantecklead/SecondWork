@@ -10,9 +10,8 @@ import java.util.List;
 @Component
 public class ShowingScheduleDAO {
 
-    private static int SCHEDULE_COUNT = 0;
-    private List<ShowingSchedule> showingSchedules;
-
+    public static int SCHEDULE_COUNT = 0;
+    public List<ShowingSchedule> showingSchedules;
     {
         showingSchedules = new ArrayList<>();
 
@@ -29,5 +28,17 @@ public class ShowingScheduleDAO {
 
     public ShowingSchedule show(long id) {
         return showingSchedules.stream().filter(schedule -> schedule.getId() == id).findFirst().orElse(null);
+    }
+
+    public int getKeyList(ShowingSchedule showingSchedule) {
+        int key = -1;
+        List<ShowingSchedule> books = this.index();
+        for (int i = 0; i < books.size(); i++) {
+            if(showingSchedule.getId() == books.get(i).getId()){
+                key = i;
+                break;
+            }
+        }
+        return key;
     }
 }

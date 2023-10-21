@@ -9,8 +9,8 @@ import java.util.List;
 @Component
 public class ClientDAO {
 
-    private static int CLIENT_COUNT;
-    private List<Client> clients;
+    public static int CLIENT_COUNT;
+    public List<Client> clients;
     {
         clients = new ArrayList<>();
 
@@ -27,5 +27,17 @@ public class ClientDAO {
 
     public Client show(int id){
         return clients.stream().filter(client -> client.getId() == id).findAny().orElse(null);
+    }
+
+    public int getKeyList(Client client) {
+        int key = -1;
+        List<Client> books = this.index();
+        for (int i = 0; i < books.size(); i++) {
+            if(client.getId() == books.get(i).getId()){
+                key = i;
+                break;
+            }
+        }
+        return key;
     }
 }

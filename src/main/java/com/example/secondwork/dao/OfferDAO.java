@@ -9,9 +9,8 @@ import java.util.List;
 @Component
 public class OfferDAO {
 
-    private static int OFFER_COUNT;
-    private List<Offer> offers;
-
+    public static int OFFER_COUNT;
+    public List<Offer> offers;
     {
         offers = new ArrayList<>();
 
@@ -28,5 +27,17 @@ public class OfferDAO {
 
     public Offer show(long id) {
         return offers.stream().filter(offer -> offer.getId() == id).findFirst().orElse(null);
+    }
+
+    public int getKeyList(Offer offer) {
+        int key = -1;
+        List<Offer> books = this.index();
+        for (int i = 0; i < books.size(); i++) {
+            if(offer.getId() == books.get(i).getId()){
+                key = i;
+                break;
+            }
+        }
+        return key;
     }
 }

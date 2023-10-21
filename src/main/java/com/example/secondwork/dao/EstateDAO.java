@@ -9,8 +9,9 @@ import java.util.List;
 @Component
 public class EstateDAO {
 
-    private static int ESTATE_COUNT;
-    private List<Estate> estate;
+    public static int ESTATE_COUNT;
+    public
+    List<Estate> estate;
     {
         estate = new ArrayList<>();
 
@@ -28,5 +29,17 @@ public class EstateDAO {
 
     public Estate show(int id){
         return estate.stream().filter(personModel -> personModel.getId() == id).findAny().orElse(null);
+    }
+
+    public int getKeyList(Estate estate) {
+        int key = -1;
+        List<Estate> books = this.index();
+        for (int i = 0; i < books.size(); i++) {
+            if(estate.getId() == books.get(i).getId()){
+                key = i;
+                break;
+            }
+        }
+        return key;
     }
 }
