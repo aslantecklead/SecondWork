@@ -1,21 +1,24 @@
 package com.example.secondwork.controller;
 
+import com.example.secondwork.CrudController;
 import com.example.secondwork.dao.ClientDAO;
+import com.example.secondwork.model.Client;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/clients")
 public class ClientController {
     private ClientDAO _clientDAO;
+    CrudController _crudController;
 
     @Autowired
-    public ClientController(ClientDAO clientDAO){
-        _clientDAO = clientDAO;
+    public ClientController(ClientDAO clientDAO) {
+        this._clientDAO = clientDAO;
+        _crudController = new CrudController(clientDAO);
     }
 
     @GetMapping()
@@ -29,4 +32,19 @@ public class ClientController {
         model.addAttribute("client", _clientDAO.show(id));
         return "estate/client/show";
     }
+
+    @GetMapping("/create")
+    public String create(Model model) {
+        model.addAttribute("title", "Add new client");
+        model.addAttribute("client", new Client());
+        return "estate/client/add";
+    }
+
+    @PostMapping("/store")
+    public String store(Model model, @Valid @ModelAttribute("client") Client client) {
+        _crudController.insert(client);
+        return "redirect:/clients";
+    }
+
+    
 }

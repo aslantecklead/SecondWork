@@ -32,15 +32,25 @@ public class CrudController {
 
     public void insert(Object object) {
         if (object instanceof Client) {
-            clientDAO.clients.add(ClientDAO.CLIENT_COUNT++, (Client) object);
+            Client client = (Client) object;
+            client.setId(ClientDAO.CLIENT_COUNT++);
+            clientDAO.clients.add(client);
         } else if (object instanceof Deal) {
-            dealDAO.deals.add(DealDAO.DEAL_COUNT++, (Deal) object);
+            Deal deal = (Deal) object;
+            deal.setId(DealDAO.DEAL_COUNT++);
+            dealDAO.deals.add(deal);
         } else if (object instanceof Estate) {
-            estateDAO.estate.add(EstateDAO.ESTATE_COUNT++, (Estate) object);
+            Estate estate = (Estate) object;
+            estate.setId(EstateDAO.ESTATE_COUNT++);
+            estateDAO.estate.add(estate);
         } else if (object instanceof Offer) {
-            offerDAO.offers.add(OfferDAO.OFFER_COUNT++, (Offer) object);
+            Offer offer = (Offer) object;
+            offer.setId(OfferDAO.OFFER_COUNT++);
+            offerDAO.offers.add(offer);
         } else if (object instanceof ShowingSchedule) {
-            showingScheduleDAO.showingSchedules.add(ShowingScheduleDAO.SCHEDULE_COUNT++, (ShowingSchedule) object);
+            ShowingSchedule showingSchedule = (ShowingSchedule) object;
+            showingSchedule.setId(ShowingScheduleDAO.SCHEDULE_COUNT++);
+            showingScheduleDAO.showingSchedules.add(showingSchedule);
         }
     }
 

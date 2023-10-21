@@ -22,6 +22,8 @@ public class Client {
         this.budget = budget;
     }
 
+    public Client(){}
+
     public String getName() {
         return name;
     }
