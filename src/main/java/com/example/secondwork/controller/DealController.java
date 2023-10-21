@@ -64,4 +64,17 @@ public class DealController {
         _crudController.update(deal);
         return "redirect:/deals";
     }
+
+    @PostMapping("/delete/{id}")
+    String delete(Model model, @PathVariable("id") int id){
+        Deal deal = dealDAO.show(id);
+        if(deal == null){
+            return "redirect:/deals";
+        }
+        deal.setId(id);
+        _crudController.delete(deal);
+        return "redirect:/deals";
+    }
+
+
 }

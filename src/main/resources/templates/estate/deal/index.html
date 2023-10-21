@@ -17,6 +17,7 @@
             <th>Date</th>
             <th>Details</th>
             <th>Edit</th>
+            <th>Delete</th>
         </tr>
         <tr th:each="deal : ${deals}">
             <td th:text="${deal.getId()}"></td>
@@ -28,6 +29,11 @@
             </td>
             <td>
                 <a class="btn btn-warning btn-block mb-2" th:href="@{/deals/edit/{id}(id=${deal.getId()})}">Edit</a>
+            </td>
+            <td>
+                <form th:action="@{/deals/delete/{id}(id=${deal.getId()})}" method="post">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
             </td>
         </tr>
     </table>
