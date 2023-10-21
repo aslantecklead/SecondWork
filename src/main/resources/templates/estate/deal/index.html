@@ -16,6 +16,7 @@
             <th>Price</th>
             <th>Date</th>
             <th>Details</th>
+            <th>Edit</th>
         </tr>
         <tr th:each="deal : ${deals}">
             <td th:text="${deal.getId()}"></td>
@@ -24,6 +25,9 @@
             <td th:text="${#dates.format(deal.getDate(), 'dd-MM-yyyy')}"></td>
             <td>
                 <a th:href="@{/deals/{id}(id=${deal.getId()})}" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a class="btn btn-warning btn-block mb-2" th:href="@{/deals/edit/{id}(id=${deal.getId()})}">Edit</a>
             </td>
         </tr>
     </table>

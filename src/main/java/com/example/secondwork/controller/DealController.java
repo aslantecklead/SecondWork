@@ -46,4 +46,22 @@ public class DealController {
         _crudController.insert(deal);
         return "redirect:/deals";
     }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") int id, Model model) {
+        Deal deal = dealDAO.show(id);
+        if (deal == null) {
+            return "redirect:/clients";
+        }
+        model.addAttribute("deal", deal);
+        model.addAttribute("title", "Editing Client");
+        return "estate/deal/update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(@PathVariable("id") int id, @Valid @ModelAttribute("deal") Deal deal) {
+        deal.setId(id);
+        _crudController.update(deal);
+        return "redirect:/deals";
+    }
 }
