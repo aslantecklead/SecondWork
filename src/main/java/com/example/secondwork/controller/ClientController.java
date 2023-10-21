@@ -46,5 +46,26 @@ public class ClientController {
         return "redirect:/clients";
     }
 
-    
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") int id, Model model) {
+        Client client = _clientDAO.show(id);
+        if (client == null) {
+            return "redirect:/clients";
+        }
+        model.addAttribute("client", client);
+        model.addAttribute("title", "Editing Client");
+        return "estate/client/update";
+    }
+
+
+    @PostMapping("/update/{id}")
+    public String update(@PathVariable("id") int id, @Valid @ModelAttribute("client") Client client) {
+        client.setId(id);
+        _crudController.update(client);
+        return "redirect:/clients";
+    }
+
+
+
+
 }
