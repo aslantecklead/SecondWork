@@ -8,6 +8,7 @@
 <body>
 <div class="container">
     <h1 class="mt-4 mb-4">List of Estates</h1>
+    <a class="btn btn-outline-primary" th:href="@{/estates/create}">Add new Estate</a>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -17,6 +18,8 @@
             <th>Bathrooms</th>
             <th>Price</th>
             <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +31,14 @@
             <td th:text="${estate.getPrice()}"></td>
             <td>
                 <a th:href="@{/estates/{id}(id=${estate.getId()})}" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a class="btn btn-warning btn-block mb-2" th:href="@{/estates/edit/{id}(id=${estate.getId()})}">Edit</a>
+            </td>
+            <td>
+                <form th:action="@{/estates/delete/{id}(id=${estate.getId()})}" method="post">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
             </td>
         </tr>
         </tbody>

@@ -15,6 +15,10 @@ public class Estate {
         this.price = price;
     }
 
+    public Estate() {
+
+    }
+
     public String getAddress() {
         return address;
     }
