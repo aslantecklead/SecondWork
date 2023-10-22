@@ -8,6 +8,7 @@
 
 <div class="container">
     <h1 class="mt-4 mb-4">Offer List</h1>
+    <a class="btn btn-outline-primary" th:href="@{/offers/create}">Add new Offer</a>
     <table class="table table-striped">
         <tr>
             <th>ID</th>
@@ -15,6 +16,8 @@
             <th>Price</th>
             <th>Agent Name</th>
             <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         <tr th:each="offer : ${offers}">
             <td th:text="${offer.getId()}"></td>
@@ -23,6 +26,14 @@
             <td th:text="${offer.getAgentName()}"></td>
             <td>
                 <a th:href="@{/offers/{id}(id=${offer.getId()})}" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a class="btn btn-warning btn-block mb-2" th:href="@{/offers/edit/{id}(id=${offer.getId()})}">Edit</a>
+            </td>
+            <td>
+                <form th:action="@{/offers/delete/{id}(id=${offer.getId()})}" method="post">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
             </td>
         </tr>
     </table>

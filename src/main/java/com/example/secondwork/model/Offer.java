@@ -13,6 +13,10 @@ public class Offer {
         this.agentName = agentName;
     }
 
+    public Offer() {
+
+    }
+
     public long getId() {
         return id;
     }
