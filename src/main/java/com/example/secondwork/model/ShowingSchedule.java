@@ -1,10 +1,13 @@
 package com.example.secondwork.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class ShowingSchedule {
     private long id;
     private String property;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     private String clientName;
 
@@ -13,6 +16,10 @@ public class ShowingSchedule {
         this.property = property;
         this.date = date;
         this.clientName = clientName;
+    }
+
+    public ShowingSchedule() {
+
     }
 
     public long getId() {
